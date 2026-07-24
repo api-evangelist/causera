@@ -1,0 +1,60 @@
+generated: '2026-07-20'
+method: probed
+source: live HTTP probes of https://causera.com
+host: https://causera.com
+result: none
+summary: 'No valid .well-known documents are published. causera.com serves a GoDaddy
+  parked-domain lander that returns HTTP 200 with text/html for every path, so every
+  .well-known probe is a FALSE-POSITIVE 200 carrying the lander HTML, not a document.
+  Status codes below are recorded as returned, with valid:false marking the false
+  positives. No SecurityTxt, WellKnown or APICatalog pointer is wired in apis.yml
+  because no real document exists.'
+documents:
+- path: /.well-known/security.txt
+  status: 200
+  content_type: text/html
+  valid: false
+  note: parked-domain lander HTML, not RFC 9116 security.txt
+- path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html
+  valid: false
+  note: parked-domain lander HTML, not OIDC discovery JSON
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: text/html
+  valid: false
+  note: parked-domain lander HTML, not RFC 8414 metadata
+- path: /.well-known/api-catalog
+  status: 200
+  content_type: text/html
+  valid: false
+  note: parked-domain lander HTML, not RFC 9727 api-catalog
+- path: /.well-known/ai-plugin.json
+  status: 200
+  content_type: text/html
+  valid: false
+  note: parked-domain lander HTML, not an ai-plugin manifest
+- path: /openapi.json
+  status: 200
+  content_type: text/html
+  valid: false
+  note: parked-domain lander HTML, no specification published
+- path: /robots.txt
+  status: 200
+  content_type: text/plain
+  valid: true
+  note: 'genuine but generic GoDaddy parking boilerplate: User-agent:*, Allow:/, LLM-Policy:/llms.txt,
+    Sitemap:/sitemap.xml'
+- path: /llms.txt
+  status: 200
+  content_type: text/plain
+  valid: true
+  causera_authored: false
+  note: 'Served, but is GoDaddy parking AI-policy boilerplate (User-agent:*, Allow:/,
+    Disallow-Training:/, Sitemap:/sitemap.xml) — contains no Causera or API content.
+    Deliberately NOT wired as a type:LLMsTxt pointer, since it does not describe the
+    company or any API.'
+false_positive_check:
+  method: control request to https://causera.com/zzz-not-real-xyz.txt
+  result: returned the same lander HTML with HTTP 200, confirming a catch-all

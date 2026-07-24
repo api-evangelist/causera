@@ -1,7 +1,27 @@
 aid: causera
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/causera.png
 name: Causera
-description: Causera is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: 'Causera was an early-stage Palo Alto, California startup surfaced as a
+  500 Global (500 Startups) portfolio company. Enrichment probing found no operating
+  public surface: the company''s own domain, causera.com, resolves to a GoDaddy parked-domain
+  lander rather than a product site, and the only verified live property is the dormant
+  "Causera Engineering" GitHub organization (github.com/causera, created 2011-06-22),
+  which holds a single public repository — a fork of mbleigh/princely, a Rails wrapper
+  for the PrinceXML PDF library — last pushed in August 2011 with no public members.
+  Causera therefore appears to be a defunct 2011-era company with no developer portal,
+  no documentation, no API, and no published specifications. This profile records the
+  negative result so future enrichment rounds do not re-probe from scratch.'
 url: https://raw.githubusercontent.com/api-evangelist/causera/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,11 +29,27 @@ x-backed-by:
 - 500-global
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-status: defunct
+x-status-evidence: 'causera.com serves a GoDaddy parking lander (window.LANDER_SYSTEM=PW,
+  _trfd ap:"parking"); github.com/causera dormant since 2011-08-02; no package-registry
+  or well-known surface found.'
+x-source-url-mismatch: 'The 500 Global portfolio scrape (500-global/portfolio/500-global-portfolio.yml)
+  paired the name "Causera" with https://simplycircle.com. That domain 301-redirects
+  to https://www.konstella.com/ — a PTA/PTO communication product with no stated link
+  to Causera. The pairing is unverified and is NOT treated as Causera''s website;
+  causera.com (declared as the blog URL on the Causera Engineering GitHub org) is used
+  instead. Retained here for provenance only.'
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
+- Startup
+- 500 Global
+- Portfolio
+- Defunct
+- Palo Alto
+- No API Surface
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -22,4 +58,13 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://simplycircle.com
+  url: https://causera.com
+- type: GitHubOrganization
+  url: https://github.com/causera
+- type: DomainSecurity
+  url: security/causera-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v1
