@@ -39,7 +39,7 @@ x-source-url-mismatch: 'The 500 Global portfolio scrape (500-global/portfolio/50
   to Causera. The pairing is unverified and is NOT treated as Causera''s website;
   causera.com (declared as the blog URL on the Causera Engineering GitHub org) is used
   instead. Retained here for provenance only.'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-20'
 tags:
